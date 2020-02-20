@@ -3,21 +3,27 @@ const fs = require("fs");
 const { join } = require("path");
 
 class Helpers {
-  static getDirectories(relativePath, active) {
+  static getDirectories(relativePath) {
     const absolutePath = join(__dirname, "../" + relativePath);
-    // console.log(
-    //   readdirSync(absolutePath).filter(f =>
-    //     statSync(join(absolutePath, f)).isDirectory()
-    //   )
-    // );
-    if (!active) {
-      return readdirSync(absolutePath).filter(f => statSync(join(absolutePath, f)).isDirectory());
+    return readdirSync(absolutePath)
+      .filter(f => statSync(join(absolutePath, f)).isDirectory())
+      .filter(x => x.indexOf("-true") !== -1);
+  }
+
+  static readJson(relativePath, fileName) {
+    const absolutePath = join(__dirname, "../" + relativePath);
+    console.log(absolutePath + "/" + fileName);
+    if (fs.existsSync(absolutePath + "/" + fileName)) {
+      return fs.readFileSync(absolutePath + "/" + fileName);
     } else {
-      return readdirSync(absolutePath)
-        .filter(f => statSync(join(absolutePath, f)).isDirectory())
-        .filter(x => x.indexOf("-true") !== -1);
+      return undefined;
     }
   }
+
+  static getActiveDirectoryFullName(relativePath, directoryId) {
+    return this.getDecodedDirectories(relativePath, true).find(x => x.id.toUpperCase() === directoryId.toUpperCase()).fullName;
+  }
+
   static generateGuid() {
     var result, i, j;
     result = "";
@@ -45,7 +51,9 @@ class Helpers {
   }
 
   static createDirectory(relativePath, directoryName) {
+    console.log("directoryName: " + directoryName);
     if (!this.getActiveDirectories(relativePath).find(x => x === directoryName.toUpperCase())) {
+      console.log("directoryName: not found ");
       let folderName = relativePath + "/" + directoryName.toUpperCase() + "-" + this.generateShortGuid() + "-true";
       console.log(folderName);
       if (!fs.existsSync(folderName)) {
@@ -53,36 +61,43 @@ class Helpers {
         return true;
       }
     }
+    console.log("directoryName: found " + this.getActiveDirectories(relativePath).find(x => x === directoryName.toUpperCase()));
     return false;
   }
 
-  static getActiveDirectories(relativePath) {
-    return this.getDecodedDirectories(relativePath, true)
-      .filter(x => x.active === "true")
-      .map(x => {
-        return x.id.toUpperCase();
-      });
-  }
+  // static getActiveDirectories(relativePath) {
+  //   console.log("relativePath: " + relativePath);
 
-  static getDecodedDirectories(relativePath, active) {
-    let directoryArray = this.getDirectories(relativePath, active);
-    let returnArray = [];
-    //console.log(directoryArray);
-    for (let item of directoryArray) {
-      returnArray.push(this.decodeDirectory(item));
-    }
-    return returnArray;
-  }
+  //   return this.getDecodedDirectories(relativePath, true)
+  //     .filter(x => x.active === "true")
+  //     .map(x => {
+  //       x.id = x.id.toUpperCase();
+  //       return x;
+  //     });
+  // }
 
-  static decodeDirectory(name) {
-    let array = name.split("-");
-    //console.log(array);
-    return {
-      id: array[0],
-      key: array[1],
-      active: array[2]
-    };
-  }
+  // static getDecodedDirectories(relativePath, active) {
+  //   let directoryArray = this.getDirectories(relativePath, active);
+
+  //   console.log("directoryArray: " + directoryArray);
+  //   let returnArray = [];
+  //   //console.log(directoryArray);
+  //   for (let item of directoryArray) {
+  //     returnArray.push(this.decodeDirectory(item));
+  //   }
+  //   return returnArray;
+  // }
+
+  // static decodeDirectory(name) {
+  //   let array = name.split("-");
+  //   //console.log(array);
+  //   return {
+  //     id: array[0],
+  //     key: array[1],
+  //     active: array[2],
+  //     fullName: name
+  //   };
+  // }
 }
 
 module.exports = Helpers;

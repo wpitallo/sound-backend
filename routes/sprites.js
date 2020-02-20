@@ -4,16 +4,9 @@ var router = express.Router();
 const Helpers = require("../helpers/helpers.js");
 
 router.get("/", function(req, res, next) {
-  let returnArray = [];
-  let results = Helpers.getDirectories("projects");
-  console.log(results);
-  for (let item of results) {
-    let projectData = Helpers.readJson("projects/" + item, "project-data.json");
-    if (projectData) {
-      returnArray.push({ data: projectData });
-    }
-  }
-  res.send();
+  console.log("get sprites");
+  console.log("result: " + Helpers.getActiveDirectories(`projects/${Helpers.getActiveDirectoryFullName("projects", req.query.id)}`));
+  res.send(Helpers.getActiveDirectories(`projects/${Helpers.getActiveDirectoryFullName("projects", req.query.id)}`));
 });
 
 router.post("/", function(req, res, next) {
@@ -22,7 +15,7 @@ router.post("/", function(req, res, next) {
   if (result) {
     res.send({
       result: "OK",
-      message: Helpers.getDirectories("projects")
+      message: Helpers.getActiveDirectories("projects")
     });
   } else {
     res.send({
