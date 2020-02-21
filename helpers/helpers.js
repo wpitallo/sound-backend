@@ -5,16 +5,14 @@ const { join } = require("path");
 class Helpers {
   static getDirectories(relativePath) {
     const absolutePath = join(__dirname, "../" + relativePath);
-    return readdirSync(absolutePath)
-      .filter(f => statSync(join(absolutePath, f)).isDirectory())
-      .filter(x => x.indexOf("-true") !== -1);
+    return readdirSync(absolutePath).filter(f => statSync(join(absolutePath, f)).isDirectory());
   }
 
   static readJson(relativePath, fileName) {
     const absolutePath = join(__dirname, "../" + relativePath);
-    console.log(absolutePath + "/" + fileName);
     if (fs.existsSync(absolutePath + "/" + fileName)) {
-      return fs.readFileSync(absolutePath + "/" + fileName);
+      console.log(absolutePath + "/" + fileName);
+      return JSON.parse(fs.readFileSync(absolutePath + "/" + fileName));
     } else {
       return undefined;
     }

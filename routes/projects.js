@@ -6,14 +6,14 @@ const Helpers = require("../helpers/helpers.js");
 router.get("/", function(req, res, next) {
   let returnArray = [];
   let results = Helpers.getDirectories("projects");
-  console.log(results);
+
   for (let item of results) {
-    let projectData = Helpers.readJson("projects/" + item, "project-data.json");
+    let projectData = Helpers.readJson("projects/" + item, "projectData.json");
     if (projectData) {
-      returnArray.push({ data: projectData });
+      returnArray.push(projectData);
     }
   }
-  res.send();
+  res.send(returnArray);
 });
 
 router.post("/", function(req, res, next) {
