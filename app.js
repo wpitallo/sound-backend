@@ -7,6 +7,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var projectsRouter = require("./routes/projects");
 var spritesRouter = require("./routes/sprites");
+var soundsRouter = require("./routes/sounds");
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/projects", projectsRouter);
 app.use("/sprites", spritesRouter);
+app.use("/sounds", soundsRouter);
 
 var listener = app.listen(8080, function() {
   console.log("Listening on port " + listener.address().port);

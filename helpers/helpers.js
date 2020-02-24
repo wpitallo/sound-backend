@@ -3,6 +3,37 @@ const fs = require("fs");
 const { join } = require("path");
 
 class Helpers {
+  uploadFile() {}
+
+  static getProjectsData() {
+    let results = Helpers.getDirectories("projects");
+    let returnArray = [];
+    for (let item of results) {
+      let projectData = Helpers.readJson("projects/" + item, "projectData.json");
+      if (projectData) {
+        returnArray.push(projectData);
+      }
+    }
+    return returnArray;
+  }
+
+  static createProjectData(directoryRelativePath, projectId) {
+    let projectData = {
+      id: `${projectId.toUpperCase()}`,
+      name: `${projectId}`,
+      sprites: []
+    };
+
+    console.log("directoryName: " + directoryRelativePath);
+    let folderName = join(__dirname, "../" + directoryRelativePath);
+    if (fs.existsSync(folderName)) {
+      fs.writeFileSync(directoryRelativePath + "/projectData.json", JSON.stringify(projectData));
+      return true;
+    }
+    console.log("directory does not exist: " + directoryRelativePath);
+    return false;
+  }
+
   static getDirectories(relativePath) {
     const absolutePath = join(__dirname, "../" + relativePath);
     return readdirSync(absolutePath).filter(f => statSync(join(absolutePath, f)).isDirectory());
@@ -48,18 +79,15 @@ class Helpers {
     return result.substring(0, 8);
   }
 
-  static createDirectory(relativePath, directoryName) {
-    console.log("directoryName: " + directoryName);
-    if (!this.getActiveDirectories(relativePath).find(x => x === directoryName.toUpperCase())) {
-      console.log("directoryName: not found ");
-      let folderName = relativePath + "/" + directoryName.toUpperCase() + "-" + this.generateShortGuid() + "-true";
-      console.log(folderName);
-      if (!fs.existsSync(folderName)) {
-        fs.mkdirSync(folderName);
-        return true;
-      }
+  static createDirectory(directoryRelativePath) {
+    //console.log("directoryName: " + directoryRelativePath);
+    let folderName = join(__dirname, "../" + directoryRelativePath);
+    if (!fs.existsSync(folderName)) {
+      fs.mkdirSync(folderName);
+      console.log("created directory: " + directoryRelativePath);
+      return true;
     }
-    console.log("directoryName: found " + this.getActiveDirectories(relativePath).find(x => x === directoryName.toUpperCase()));
+    console.log("directory exists: " + directoryRelativePath);
     return false;
   }
 

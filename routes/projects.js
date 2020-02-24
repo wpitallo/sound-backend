@@ -4,29 +4,32 @@ var router = express.Router();
 const Helpers = require("../helpers/helpers.js");
 
 router.get("/", function(req, res, next) {
-  let returnArray = [];
-  let results = Helpers.getDirectories("projects");
-
-  for (let item of results) {
-    let projectData = Helpers.readJson("projects/" + item, "projectData.json");
-    if (projectData) {
-      returnArray.push(projectData);
-    }
-  }
-  res.send(returnArray);
+  let results = Helpers.getProjectsData();
+  res.send(results);
 });
 
 router.post("/", function(req, res, next) {
   console.log("post project");
-  let result = Helpers.createDirectory("projects", req.query.id);
+
+  let relativePath = "projects/" + req.query.id.toUpperCase();
+
+  let result = Helpers.createDirectory(relativePath);
   if (result) {
-    res.send({
-      result: "OK",
-      message: Helpers.getDirectories("projects")
-    });
+    let createProjectResult = Helpers.createProjectData(relativePath, req.query.id);
+    if (createProjectResult) {
+      res.send({
+        status: "ok",
+        message: Helpers.getProjectsData()
+      });
+    } else {
+      res.send({
+        status: "failed",
+        message: "Failed to create project Json"
+      });
+    }
   } else {
     res.send({
-      result: "FAILED",
+      status: "failed",
       message: "Project Already Exists"
     });
   }

@@ -8,232 +8,232 @@
       "name": "SPRITE1",
       "sounds": [
         {
-          "id": 1,
+          "id": "SOUND1",
           "order": 1,
-          "name": "Sound 1",
+          "name": "Sound1",
           "src": "/sounds/as_Base_Background.mp3",
           "presets": [
             {
-              "id": 1,
+              "id": "PRESET1",
               "order": 1,
-              "name": "Preset 1",
+              "name": "Preset1",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 2,
+              "id": "PRESET2",
               "order": 1,
-              "name": "Preset 2",
+              "name": "Preset2",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 3,
+              "id": "PRESET3",
               "order": 3,
-              "name": "Preset 3",
+              "name": "Preset3",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 4,
+              "id": "PRESET4",
               "order": 4,
-              "name": "Preset 4",
+              "name": "Preset4",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             }
           ]
         },
         {
-          "id": 2,
+          "id": "SOUND2",
           "order": 1,
-          "name": "Sound 2",
+          "name": "Sound2",
           "src": "/sounds/summarySounds.mp3",
           "presets": [
             {
-              "id": 1,
+              "id": "PRESET1",
               "order": 1,
-              "name": "Preset 1",
+              "name": "Preset1",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 2,
+              "id": "PRESET2",
               "order": 1,
-              "name": "Preset 2",
+              "name": "Preset2",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 3,
+              "id": "PRESET3",
               "order": 3,
-              "name": "Preset 3",
+              "name": "Preset3",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             },
             {
-              "id": 4,
+              "id": "PRESET4",
               "order": 4,
-              "name": "Preset 4",
+              "name": "Preset4",
               "effects": [
                 {
-                  "id": 1,
+                  "id": "EFFECT1",
                   "order": 1,
-                  "name": "Effect 1"
+                  "name": "Effect1"
                 },
                 {
-                  "id": 2,
+                  "id": "EFFECT2",
                   "order": 1,
-                  "name": "Effect 2"
+                  "name": "Effect2"
                 },
                 {
-                  "id": 3,
+                  "id": "EFFECT3",
                   "order": 3,
-                  "name": "Effect 3"
+                  "name": "Effect3"
                 },
                 {
-                  "id": 4,
+                  "id": "EFFECT4",
                   "order": 4,
-                  "name": "Effect 4"
+                  "name": "Effect4"
                 }
               ]
             }

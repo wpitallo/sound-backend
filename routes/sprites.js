@@ -14,12 +14,12 @@ router.post("/", function(req, res, next) {
   let result = Helpers.createDirectory("projects", req.query.id);
   if (result) {
     res.send({
-      result: "OK",
+      status: "ok",
       message: Helpers.getActiveDirectories("projects")
     });
   } else {
     res.send({
-      result: "FAILED",
+      status: "failed",
       message: "Project Already Exists"
     });
   }
