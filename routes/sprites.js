@@ -1,28 +1,13 @@
-var express = require("express");
-var router = express.Router();
+let sprites = require("../entities/sprites");
 
-const Helpers = require("../helpers/helpers.js");
-
-router.get("/", function(req, res, next) {
-  console.log("get sprites");
-  console.log("result: " + Helpers.getActiveDirectories(`projects/${Helpers.getActiveDirectoryFullName("projects", req.query.id)}`));
-  res.send(Helpers.getActiveDirectories(`projects/${Helpers.getActiveDirectoryFullName("projects", req.query.id)}`));
-});
+let express = require("express");
+let router = express.Router();
 
 router.post("/", function(req, res, next) {
-  console.log("post project");
-  let result = Helpers.createDirectory("projects", req.query.id);
-  if (result) {
-    res.send({
-      status: "ok",
-      message: Helpers.getActiveDirectories("projects")
-    });
-  } else {
-    res.send({
-      status: "failed",
-      message: "Project Already Exists"
-    });
-  }
+  console.log("post sprites");
+  let createSpriteResult = sprites.createSpriteData(req.query.projectId, req.query.spriteId);
+  console.log("createSpriteResult", createSpriteResult);
+  res.send(createSpriteResult);
 });
 
 module.exports = router;

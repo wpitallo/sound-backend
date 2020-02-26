@@ -1,11 +1,9 @@
-var express = require("express");
-var router = express.Router();
-
+let express = require("express");
+let router = express.Router();
 const { join } = require("path");
-
 const formidable = require("formidable");
-
 const Helpers = require("../helpers/helpers.js");
+let sounds = require("../entities/sounds");
 
 router.post("/upload", (req, res) => {
   let form = new formidable.IncomingForm();
@@ -23,16 +21,7 @@ router.post("/upload", (req, res) => {
   });
 
   form.on("file", function(name, file) {
-    console.log("name", name);
-    console.log("file", file);
-
-    let soundJson = {
-      id: "SOUND1",
-      order: 1,
-      name: "Sound1",
-      src: "/sounds/as_Base_Background.mp3",
-      presets: []
-    };
+    let result = sounds.createSoundsData(projectId, spriteId, file);
 
     console.log("Uploaded " + file.name);
   });

@@ -1,39 +1,8 @@
-const { readdirSync, statSync, fsyncSync } = require("fs");
+const { readdirSync, statSync } = require("fs");
 const fs = require("fs");
 const { join } = require("path");
 
 class Helpers {
-  uploadFile() {}
-
-  static getProjectsData() {
-    let results = Helpers.getDirectories("projects");
-    let returnArray = [];
-    for (let item of results) {
-      let projectData = Helpers.readJson("projects/" + item, "projectData.json");
-      if (projectData) {
-        returnArray.push(projectData);
-      }
-    }
-    return returnArray;
-  }
-
-  static createProjectData(directoryRelativePath, projectId) {
-    let projectData = {
-      id: `${projectId.toUpperCase()}`,
-      name: `${projectId}`,
-      sprites: []
-    };
-
-    console.log("directoryName: " + directoryRelativePath);
-    let folderName = join(__dirname, "../" + directoryRelativePath);
-    if (fs.existsSync(folderName)) {
-      fs.writeFileSync(directoryRelativePath + "/projectData.json", JSON.stringify(projectData));
-      return true;
-    }
-    console.log("directory does not exist: " + directoryRelativePath);
-    return false;
-  }
-
   static getDirectories(relativePath) {
     const absolutePath = join(__dirname, "../" + relativePath);
     return readdirSync(absolutePath).filter(f => statSync(join(absolutePath, f)).isDirectory());
@@ -49,36 +18,6 @@ class Helpers {
     }
   }
 
-  static getActiveDirectoryFullName(relativePath, directoryId) {
-    return this.getDecodedDirectories(relativePath, true).find(x => x.id.toUpperCase() === directoryId.toUpperCase()).fullName;
-  }
-
-  static generateGuid() {
-    var result, i, j;
-    result = "";
-    for (j = 0; j < 32; j++) {
-      if (j === 8 || j === 12 || j === 16 || j === 20) result = result + "-";
-      i = Math.floor(Math.random() * 16)
-        .toString(16)
-        .toUpperCase();
-      result = result + i;
-    }
-    return result;
-  }
-
-  static generateShortGuid() {
-    var result, i, j;
-    result = "";
-    for (j = 0; j < 32; j++) {
-      if (j === 8 || j === 12 || j === 16 || j === 20) result = result + "-";
-      i = Math.floor(Math.random() * 16)
-        .toString(16)
-        .toUpperCase();
-      result = result + i;
-    }
-    return result.substring(0, 8);
-  }
-
   static createDirectory(directoryRelativePath) {
     //console.log("directoryName: " + directoryRelativePath);
     let folderName = join(__dirname, "../" + directoryRelativePath);
@@ -90,6 +29,36 @@ class Helpers {
     console.log("directory exists: " + directoryRelativePath);
     return false;
   }
+
+  // static getActiveDirectoryFullName(relativePath, directoryId) {
+  //   return this.getDecodedDirectories(relativePath, true).find(x => x.id.toUpperCase() === directoryId.toUpperCase()).fullName;
+  // }
+
+  // static generateGuid() {
+  //   var result, i, j;
+  //   result = "";
+  //   for (j = 0; j < 32; j++) {
+  //     if (j === 8 || j === 12 || j === 16 || j === 20) result = result + "-";
+  //     i = Math.floor(Math.random() * 16)
+  //       .toString(16)
+  //       .toUpperCase();
+  //     result = result + i;
+  //   }
+  //   return result;
+  // }
+
+  // static generateShortGuid() {
+  //   var result, i, j;
+  //   result = "";
+  //   for (j = 0; j < 32; j++) {
+  //     if (j === 8 || j === 12 || j === 16 || j === 20) result = result + "-";
+  //     i = Math.floor(Math.random() * 16)
+  //       .toString(16)
+  //       .toUpperCase();
+  //     result = result + i;
+  //   }
+  //   return result.substring(0, 8);
+  // }
 
   // static getActiveDirectories(relativePath) {
   //   console.log("relativePath: " + relativePath);

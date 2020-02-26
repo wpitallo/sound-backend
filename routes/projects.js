@@ -1,38 +1,23 @@
-var express = require("express");
-var router = express.Router();
+let projects = require("../entities/projects");
 
-const Helpers = require("../helpers/helpers.js");
+let express = require("express");
+let router = express.Router();
 
 router.get("/", function(req, res, next) {
-  let results = Helpers.getProjectsData();
+  let results = projects.getProjects();
+  res.send(results);
+});
+
+router.get("/:projectId", function(req, res, next) {
+  console.log("get project by id: " + req.params.projectId);
+  let results = projects.getProjectById(req.params.projectId);
   res.send(results);
 });
 
 router.post("/", function(req, res, next) {
   console.log("post project");
-
-  let relativePath = "projects/" + req.query.id.toUpperCase();
-
-  let result = Helpers.createDirectory(relativePath);
-  if (result) {
-    let createProjectResult = Helpers.createProjectData(relativePath, req.query.id);
-    if (createProjectResult) {
-      res.send({
-        status: "ok",
-        message: Helpers.getProjectsData()
-      });
-    } else {
-      res.send({
-        status: "failed",
-        message: "Failed to create project Json"
-      });
-    }
-  } else {
-    res.send({
-      status: "failed",
-      message: "Project Already Exists"
-    });
-  }
+  let createProjectResult = projects.createProjectData(req.query.projectId);
+  res.send(createProjectResult);
 });
 
 module.exports = router;
