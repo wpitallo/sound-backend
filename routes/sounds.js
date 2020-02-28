@@ -5,6 +5,10 @@ const formidable = require("formidable");
 const Helpers = require("../helpers/helpers.js");
 let sounds = require("../entities/sounds");
 
+// router.get("/:projectId/:spriteId", (req, res) => {
+//   console.log("get project by id: " + req.params.projectId);
+// });
+
 router.post("/upload", (req, res) => {
   let form = new formidable.IncomingForm();
 
@@ -22,7 +26,7 @@ router.post("/upload", (req, res) => {
 
   form.on("file", function(name, file) {
     let result = sounds.createSoundsData(projectId, spriteId, file);
-
+    res.send(result);
     console.log("Uploaded " + file.name);
   });
 });

@@ -10,7 +10,7 @@ class Sounds {
     let spritesData = projectData.sprites.find(x => x.id === spriteId.toUpperCase());
     let soundsExits = false;
 
-    for (let sound of spritesData) {
+    for (let sound of spritesData.sounds) {
       if (sound.id === file.name.toUpperCase()) {
         soundsExits = true;
       }
@@ -25,17 +25,18 @@ class Sounds {
         presets: []
       };
 
-      spritesData.push(soundJson);
+      spritesData.sounds.push(soundJson);
 
       fs.writeFileSync(projectPath + "/projectData.json", JSON.stringify(projectData));
+      console.log("------------ sound uploaded ---------");
       return {
         status: "ok",
-        message: spritesData
+        message: spritesData.sounds
       };
     } else {
       return {
         status: "ok",
-        message: spritesData
+        message: spritesData.sounds
       };
     }
   }
