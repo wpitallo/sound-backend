@@ -1,4 +1,4 @@
-let helpers = require("../helpers/helpers");
+let helpers = require("../helpers");
 const fs = require("fs");
 const { join } = require("path");
 

@@ -30,7 +30,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Accept, Authorization, Content-Type, X-Requested-With, Range");
   if (req.method === "OPTIONS") {
     return res.send(200);
-  } else {
+  }
+  else {
     return next();
   }
 });
@@ -47,6 +48,6 @@ app.use("/effects", effectsRouter);
 
 app.use("/sound-files", express.static(path.join(__dirname, "/projects")));
 
-var listener = app.listen(8080, function() {
+var listener = app.listen(8080, "0.0.0.0", function() {
   console.log("Listening on port " + listener.address().port);
 });
