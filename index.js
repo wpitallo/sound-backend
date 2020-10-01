@@ -1,9 +1,9 @@
 const esmImport = require("esm")(module /*, options*/ )
 process.env.ENVIRONMENT = 'test'
-require('@wpitallo/global/env/load')
+require('@wpitallo/globalServer/core/loadEnvFile')
 
 const Config = esmImport(`../_configuration/configuration.js`).default
-const Global = esmImport('@wpitallo/global/index.js').default
+const Global = esmImport('@wpitallo/globalServer/index.js').default
 const routes = esmImport("./routes/routes.js").default
 console.log('function app - starting')
 const version = 'v1'
